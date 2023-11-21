@@ -1,0 +1,38 @@
+.header {
+  height: 95vh; /* This should always be 95% of the viewport height */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* clip-path: polygon(50% 0, 100% 100%, 0 100%); */ /* This makes a triangle */
+  /* https://bennettfeely.com/clippy/ */
+  /* clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%); */ /* This makes a right arrow */
+
+  @include respond(phone) {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+  }
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+  &__logo {
+    height: 3.5rem; /* width will be automatically figured out by browser */
+  }
+  &__text-box {
+    position: absolute;
+    top: 40%; /* This is in relation to the parent, so it will place the top side of our text box at half way down */
+    left: 50%; /* This is in relation to the parent, so it will place the left side of our text box at half way across */
+    /* This then translates the text box in relation to itsself, perfectly centering */
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
